@@ -1,63 +1,58 @@
-let users = [];
+document.getElementById('create-account-btn').addEventListener('click', createAccount);
+document.getElementById('login-btn').addEventListener('click', login);
+document.getElementById('show-login').addEventListener('click', showLoginForm);
+document.getElementById('show-create-account').addEventListener('click', showCreateAccountForm);
 
-// Show the login form
 function showLoginForm() {
-  document.getElementById("create-account-form").style.display = "none";
-  document.getElementById("login-form").style.display = "block";
+    document.getElementById('create-account-form').style.display = 'none';
+    document.getElementById('login-form').style.display = 'block';
 }
 
-// Show the create account form
 function showCreateAccountForm() {
-  document.getElementById("login-form").style.display = "none";
-  document.getElementById("create-account-form").style.display = "block";
+    document.getElementById('login-form').style.display = 'none';
+    document.getElementById('create-account-form').style.display = 'block';
 }
 
-// Create a new account
-function createAccount() {
-  const username = document.getElementById("new-username").value;
-  const password = document.getElementById("new-password").value;
-  const role = document.getElementById("new-role").value;
+async function createAccount() {
+    const username = document.getElementById('new-username').value;
+    const password = document.getElementById('new-password').value;
+    const role = document.getElementById('new-role').value;
 
-  if (username && password && role) {
-    if (users.some((user) => user.username === username)) {
-      alert("Username already exists. Please choose a different username.");
-    } else {
-      users.push({ username, password, role });
-      alert("Account created successfully!");
-      showLoginForm();
+    const response = await fetch('/api/create-account', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password, role }),
+    });
+
+    const data = await response.json();
+    alert(data.message);
+    if (response.ok) {
+        showLoginForm();
     }
-  } else {
-    alert("Please fill in all fields.");
-  }
 }
 
-// Login the user
-function login() {
-  const username = document.getElementById("username").value;
-  const password = document.getElementById("password").value;
+async function login() {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
 
-  const user = users.find(
-    (user) => user.username === username && user.password === password
-  );
+    const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+    });
 
-  if (user) {
-    document.getElementById("login-form").style.display = "none";
-    if (user.role === "shopper") {
-      document.getElementById("shopper-interface").style.display = "block";
-    } else if (user.role === "shop_owner") {
-      document.getElementById("shop_owner-interface").style.display = "block";
+    const data = await response.json();
+    alert(data.message);
+    if (response.ok) {
+        document.getElementById('login-form').style.display = 'none';
+        if (data.role === 'shopper') {
+            document.getElementById('shopper-interface').style.display = 'block';
+        } else if (data.role === 'shop_owner') {
+            document.getElementById('shop_owner-interface').style.display = 'block';
+        }
     }
-  } else {
-    alert("Invalid username or password.");
-  }
 }
-
-// Event listeners for buttons and links
-document
-  .getElementById("create-account-btn")
-  .addEventListener("click", createAccount);
-document.getElementById("login-btn").addEventListener("click", login);
-document.getElementById("show-login").addEventListener("click", showLoginForm);
-document
-  .getElementById("show-create-account")
-  .addEventListener("click", showCreateAccountForm);

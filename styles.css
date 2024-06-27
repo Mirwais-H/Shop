@@ -5,12 +5,15 @@ body {
   background-color: #f4f4f4;
 }
 
-#login-form, #create-account-form, #shopper-interface, #shop_owner-interface {
+#login-form,
+#create-account-form,
+#shopper-interface,
+#shop_owner-interface {
   width: 300px;
   margin: 50px auto;
   padding: 20px;
   background-color: #fff;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
 }
 
@@ -18,14 +21,17 @@ h2 {
   text-align: center;
 }
 
-label, input, select, button {
+label,
+input,
+select,
+button {
   display: block;
   width: 100%;
   margin: 10px 0;
 }
 
 button {
-  background-color: #007BFF;
+  background-color: #007bff;
   color: white;
   border: none;
   padding: 10px;
@@ -41,6 +47,6 @@ p {
 }
 
 a {
-  color: #007BFF;
+  color: #007bff;
   cursor: pointer;
 }

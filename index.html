@@ -1,58 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Shop</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Shop</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <!-- Create Account Form -->
-    <div id="create-account-form">
-        <h2>Create Account</h2>
-        <label for="new-username">Username:</label>
-        <input type="text" id="new-username">
-        <br>
-        <label for="new-password">Password:</label>
-        <input type="password" id="new-password">
-        <br>
-        <label for="new-role">Role:</label>
-        <select id="new-role">
-            <option value="shopper">Shopper</option>
-            <option value="shop_owner">Shop Owner</option>
-        </select>
-        <br>
-        <button id="create-account-btn">Create Account</button>
-        <p>Already have an account? <a href="#" id="show-login">Login here</a>.</p>
-    </div>
+  <!-- Create Account Form -->
+  <div id="create-account-form">
+    <h2>Create Account</h2>
+    <label for="new-username">Username:</label>
+    <input type="text" id="new-username">
+    <br>
+    <label for="new-password">Password:</label>
+    <input type="password" id="new-password">
+    <br>
+    <label for="new-role">Role:</label>
+    <select id="new-role">
+      <option value="shopper">Shopper</option>
+      <option value="shop_owner">Shop Owner</option>
+    </select>
+    <br>
+    <button id="create-account-btn">Create Account</button>
+    <p>Already have an account? <a href="#" id="show-login">Login here</a>.</p>
+  </div>
 
-    <!-- Login Form -->
-    <div id="login-form" style="display: none;">
-        <h2>Login</h2>
-        <label for="username">Username:</label>
-        <input type="text" id="username">
-        <br>
-        <label for="password">Password:</label>
-        <input type="password" id="password">
-        <br>
-        <button id="login-btn">Login</button>
-        <p>Don't have an account? <a href="#" id="show-create-account">Create one here</a>.</p>
-    </div>
+  <!-- Login Form -->
+  <div id="login-form" style="display: none;">
+    <h2>Login</h2>
+    <label for="username">Username:</label>
+    <input type="text" id="username">
+    <br>
+    <label for="password">Password:</label>
+    <input type="password" id="password">
+    <br>
+    <button id="login-btn">Login</button>
+    <p>Don't have an account? <a href="#" id="show-create-account">Create one here</a>.</p>
+  </div>
 
-    <!-- Shopper Interface -->
-    <div id="shopper-interface" style="display: none;">
-        <h2>Welcome Shopper</h2>
-        <p>Here are some products for you to browse and purchase.</p>
-        <!-- Add more shopper-specific content here -->
-    </div>
+  <!-- Shopper Interface -->
+  <div id="shopper-interface" style="display: none;">
+    <h2>Welcome Shopper</h2>
+    <p>Here are some products for you to browse and purchase.</p>
+    <!-- Add more shopper-specific content here -->
+  </div>
 
-    <!-- Shop Owner Interface -->
-    <div id="shop_owner-interface" style="display: none;">
-        <h2>Welcome Shop Owner</h2>
-        <p>Here you can manage your products and view sales statistics.</p>
-        <!-- Add more shop owner-specific content here -->
-    </div>
+  <!-- Shop Owner Interface -->
+  <div id="shop_owner-interface" style="display: none;">
+    <h2>Welcome Shop Owner</h2>
+    <p>Here you can manage your products and view sales statistics.</p>
+    <!-- Add more shop owner-specific content here -->
+  </div>
 
-    <script src="scripts.js"></script>
+  <script src="scripts.js"></script>
 </body>
+
 </html>

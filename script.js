@@ -111,7 +111,7 @@ function addItem() {
   }
 }
 
-// Display items
+// Example of dynamically adding items within a container
 function displayItems() {
   const items = JSON.parse(localStorage.getItem('items')) || [];
   const itemsList = document.getElementById('items-list');
@@ -154,65 +154,3 @@ function searchItems() {
   });
 }
 
-// Add item to cart
-function addToCart(itemName) {
-  const items = JSON.parse(localStorage.getItem('items')) || [];
-  const cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-  const item = items.find(i => i.name === itemName);
-  if (item) {
-      cart.push(item);
-      localStorage.setItem('cart', JSON.stringify(cart));
-      alert(`${itemName} added to cart!`);
-      displayCart();
-  } else {
-      alert('Item not found.');
-  }
-}
-
-// Display cart items
-function displayCart() {
-  const cart = JSON.parse(localStorage.getItem('cart')) || [];
-  const cartList = document.getElementById('cart-list');
-  cartList.innerHTML = '';
-
-  cart.forEach((item, index) => {
-      const cartItemElement = document.createElement('div');
-      cartItemElement.className = 'cart-item';
-      cartItemElement.innerHTML = `
-          <h4>${item.name}</h4>
-          <p>${item.description}</p>
-          <img src="${item.media}" alt="${item.name}" style="max-width: 100%;">
-          <p>Price: $${item.price}</p>
-          <p>Delivery: ${item.delivery}</p>
-          <button onclick="removeFromCart(${index})">Remove</button>
-      `;
-      cartList.appendChild(cartItemElement);
-  });
-}
-
-// Remove item from cart
-function removeFromCart(index) {
-  const cart = JSON.parse(localStorage.getItem('cart')) || [];
-  cart.splice(index, 1);
-  localStorage.setItem('cart', JSON.stringify(cart));
-  displayCart();
-}
-
-// Checkout
-function checkout() {
-  const cart = JSON.parse(localStorage.getItem('cart')) || [];
-  if (cart.length === 0) {
-      alert('Your cart is empty.');
-      return;
-  }
-
-  let total = 0;
-  cart.forEach(item => {
-      total += parseFloat(item.price);
-  });
-
-  alert(`Your total is $${total}. Thank you for your purchase!`);
-  localStorage.removeItem('cart');
-  displayCart();
-}

@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Interactive Shop</h1>
+        <h1>MH-Business</h1>
         <div id="auth-container">
             <div id="login-form" class="form-container">
                 <h2>Login</h2>
@@ -31,7 +31,7 @@
             </div>
         </div>
         <div id="shop-container" style="display: none;">
-            <h2>Welcome to the Shop</h2>
+            <h2>Welcome to MH-Business</h2>
             <p id="user-role-message"></p>
             <button onclick="logout()">Logout</button>
             <div id="shop-owner-section" style="display: none;">
@@ -55,10 +55,7 @@
             <div id="buyer-section" style="display: none;">
                 <h3>Items for Sale</h3>
                 <input type="text" id="search-bar" placeholder="Search for items..." onkeyup="searchItems()">
-                <div id="items-list"></div>
-                <h3>Your Cart</h3>
-                <div id="cart-list"></div>
-                <button onclick="checkout()">Checkout</button>
+                <div id="items-list" class="items-container"></div>
             </div>
         </div>
     </div>

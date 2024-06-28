@@ -1,3 +1,4 @@
+/* Reset and global styles */
 body {
   font-family: Arial, sans-serif;
   background-color: #f0f0f0;
@@ -13,8 +14,9 @@ body {
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 500px;
+  width: 400px; /* Adjust width as needed */
   text-align: center;
+  position: relative; /* Ensure container is relative for absolute positioning inside */
 }
 
 .form-container {
@@ -51,29 +53,48 @@ a:hover {
   text-decoration: underline;
 }
 
-#items-list, #cart-list {
-  text-align: left;
-}
-
-.item, .cart-item {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 10px 0;
-  background-color: #e9f5ff;
-}
-
-h3 {
+/* Items section */
+.items-container {
+  position: absolute;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjust item width */
+  gap: 20px; /* Adjust gap between items */
   margin-top: 20px;
 }
 
-label {
-  display: block;
-  margin-top: 10px;
-  text-align: left;
-  font-weight: bold;
+.item {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #e9f5ff;
 }
 
-#search-bar {
-  margin-bottom: 20px;
+.item img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Shop owner section */
+#shop-owner-section {
+  position: absolute;
+  top: 250px; /* Adjust top position as needed */
+  right: 0px; /* Adjust right position as needed */
+  width: 400px; /* Adjust width as needed */
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (max-width: 768px) {
+  .items-container {
+      grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); /* Adjust for smaller screens */
+  }
+
+  #shop-owner-section {
+      position: relative; /* Change position to relative for smaller screens */
+      width: 100%; /* Adjust width for smaller screens */
+      margin-top: 20px;
+      right: 0;
+  }
 }

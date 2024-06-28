@@ -7,52 +7,61 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Create Account Form -->
-    <div id="create-account-form">
-        <h2>Create Account</h2>
-        <label for="new-username">Username:</label>
-        <input type="text" id="new-username">
-        <br>
-        <label for="new-password">Password:</label>
-        <input type="password" id="new-password">
-        <br>
-        <label for="new-role">Role:</label>
-        <select id="new-role">
-            <option value="shopper">Shopper</option>
-            <option value="shop_owner">Shop Owner</option>
-        </select>
-        <br>
-        <button id="create-account-btn">Create Account</button>
-        <p>Already have an account? <a href="#" id="show-login">Login here</a>.</p>
+    <div class="container">
+        <h1>Interactive Shop</h1>
+        <div id="auth-container">
+            <div id="login-form" class="form-container">
+                <h2>Login</h2>
+                <input type="text" id="login-username" placeholder="Username">
+                <input type="password" id="login-password" placeholder="Password">
+                <button onclick="login()">Login</button>
+                <p>Don't have an account? <a href="#" onclick="showRegister()">Create one</a></p>
+            </div>
+            <div id="register-form" class="form-container" style="display: none;">
+                <h2>Create Account</h2>
+                <input type="text" id="register-username" placeholder="Username">
+                <input type="password" id="register-password" placeholder="Password">
+                <select id="register-role" onchange="togglePinCode()">
+                    <option value="buyer">Buyer</option>
+                    <option value="shopOwner">Shop Owner</option>
+                </select>
+                <input type="password" id="register-pin" placeholder="Pin Code (For Shop Owners Only)" style="display: none;">
+                <button onclick="register()">Create Account</button>
+                <p>Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
+            </div>
+        </div>
+        <div id="shop-container" style="display: none;">
+            <h2>Welcome to the Shop</h2>
+            <p id="user-role-message"></p>
+            <button onclick="logout()">Logout</button>
+            <div id="shop-owner-section" style="display: none;">
+                <h3>Add Item</h3>
+                <label for="item-name">Item Name</label>
+                <input type="text" id="item-name" placeholder="Item Name">
+                <label for="item-description">Description</label>
+                <textarea id="item-description" placeholder="Description"></textarea>
+                <label for="item-media">Photo or Video</label>
+                <input type="file" id="item-media" accept="image/*,video/*">
+                <label for="item-price">Price</label>
+                <input type="number" id="item-price" placeholder="Price">
+                <label for="item-delivery">Delivery Type</label>
+                <select id="item-delivery">
+                    <option value="pick-up">Pick Up</option>
+                    <option value="delivery">Delivery</option>
+                    <option value="both">Both</option>
+                </select>
+                <button onclick="addItem()">Add Item</button>
+            </div>
+            <div id="buyer-section" style="display: none;">
+                <h3>Items for Sale</h3>
+                <input type="text" id="search-bar" placeholder="Search for items..." onkeyup="searchItems()">
+                <div id="items-list"></div>
+                <h3>Your Cart</h3>
+                <div id="cart-list"></div>
+                <button onclick="checkout()">Checkout</button>
+            </div>
+        </div>
     </div>
-
-    <!-- Login Form -->
-    <div id="login-form" style="display: none;">
-        <h2>Login</h2>
-        <label for="username">Username:</label>
-        <input type="text" id="username">
-        <br>
-        <label for="password">Password:</label>
-        <input type="password" id="password">
-        <br>
-        <button id="login-btn">Login</button>
-        <p>Don't have an account? <a href="#" id="show-create-account">Create one here</a>.</p>
-    </div>
-
-    <!-- Shopper Interface -->
-    <div id="shopper-interface" style="display: none;">
-        <h2>Welcome Shopper</h2>
-        <p>Here are some products for you to browse and purchase.</p>
-        <!-- Add more shopper-specific content here -->
-    </div>
-
-    <!-- Shop Owner Interface -->
-    <div id="shop_owner-interface" style="display: none;">
-        <h2>Welcome Shop Owner</h2>
-        <p>Here you can manage your products and view sales statistics.</p>
-        <!-- Add more shop owner-specific content here -->
-    </div>
-
-    <script src="scripts.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

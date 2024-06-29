@@ -3,62 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Shop</title>
+    <title>Login or Register</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>MH-Business</h1>
-        <div id="auth-container">
-            <div id="login-form" class="form-container">
-                <h2>Login</h2>
-                <input type="text" id="login-username" placeholder="Username">
-                <input type="password" id="login-password" placeholder="Password">
-                <button onclick="login()">Login</button>
-                <p>Don't have an account? <a href="#" onclick="showRegister()">Create one</a></p>
-            </div>
-            <div id="register-form" class="form-container" style="display: none;">
-                <h2>Create Account</h2>
-                <input type="text" id="register-username" placeholder="Username">
-                <input type="password" id="register-password" placeholder="Password">
-                <select id="register-role" onchange="togglePinCode()">
-                    <option value="buyer">Buyer</option>
-                    <option value="shopOwner">Shop Owner</option>
-                </select>
-                <input type="password" id="register-pin" placeholder="Pin Code (For Shop Owners Only)" style="display: none;">
-                <button onclick="register()">Create Account</button>
-                <p>Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
-            </div>
+    <div class="form-container">
+        <!-- Register Form -->
+        <div id="register-form" style="display: none;">
+            <h2>Create Account</h2>
+            <form id="register">
+                <div class="input-container">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="input-container">
+                    <label for="last-name">Last Name:</label>
+                    <input type="text" id="last-name" name="last-name">
+                </div>
+                <div class="input-container">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="input-container">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="input-container">
+                    <label for="reg-password">Password:</label>
+                    <input type="password" id="reg-password" name="password" required>
+                </div>
+                <div class="input-container">
+                    <label for="confirm-password">Re-enter Password:</label>
+                    <input type="password" id="confirm-password" name="confirm-password" required>
+                </div>
+                <div class="input-container">
+                    <label for="account-type">Account Type:</label>
+                    <select id="account-type" name="account-type" required>
+                        <option value="buyer">Buyer</option>
+                        <option value="shop-owner">Shop Owner</option>
+                    </select>
+                </div>
+                <div class="input-container shop-owner-password" style="display: none;">
+                    <label for="shop-owner-password">Shop Owner Password:</label>
+                    <input type="password" id="shop-owner-password" name="shop-owner-password">
+                </div>
+                <button type="submit" class="btn">Create Account</button>
+                <p class="switch-form">Already have an account? <a href="#" id="show-login">Login</a></p>
+            </form>
         </div>
-        <div id="shop-container" style="display: none;">
-            <h2>Welcome to MH-Business</h2>
-            <p id="user-role-message"></p>
-            <button onclick="logout()">Logout</button>
-            <div id="shop-owner-section" style="display: none;">
-                <h3>Add Item</h3>
-                <label for="item-name">Item Name</label>
-                <input type="text" id="item-name" placeholder="Item Name">
-                <label for="item-description">Description</label>
-                <textarea id="item-description" placeholder="Description"></textarea>
-                <label for="item-media">Photo or Video</label>
-                <input type="file" id="item-media" accept="image/*,video/*">
-                <label for="item-price">Price</label>
-                <input type="number" id="item-price" placeholder="Price">
-                <label for="item-delivery">Delivery Type</label>
-                <select id="item-delivery">
-                    <option value="pick-up">Pick Up</option>
-                    <option value="delivery">Delivery</option>
-                    <option value="both">Both</option>
-                </select>
-                <button onclick="addItem()">Add Item</button>
-            </div>
-            <div id="buyer-section" style="display: none;">
-                <h3>Items for Sale</h3>
-                <input type="text" id="search-bar" placeholder="Search for items..." onkeyup="searchItems()">
-                <div id="items-list" class="items-container"></div>
-            </div>
+
+        <!-- Login Form -->
+        <div id="login-form">
+            <h2>Login</h2>
+            <form id="login">
+                <div class="input-container">
+                    <label for="username-login">Username:</label>
+                    <input type="text" id="username-login" name="username" required>
+                </div>
+                <div class="input-container">
+                    <label for="password-login">Password:</label>
+                    <input type="password" id="password-login" name="password" required>
+                </div>
+                <button type="submit" class="btn">Login</button>
+                <p class="switch-form">Don't have an account? <a href="#" id="show-register">Create one</a></p>
+            </form>
         </div>
     </div>
-    <script src="script.js"></script>
+
+    <script src="scripts.js"></script>
 </body>
 </html>

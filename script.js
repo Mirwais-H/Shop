@@ -1,27 +1,27 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const loginForm = document.getElementById('login-form');
-    const registerForm = document.getElementById('register-form');
+    const loginForm = document.getElementById('login');
+    const registerForm = document.getElementById('register');
     const showRegisterLink = document.getElementById('show-register');
     const showLoginLink = document.getElementById('show-login');
     const accountTypeSelect = document.getElementById('account-type');
     const shopOwnerPasswordField = document.querySelector('.shop-owner-password');
 
     // Show login form initially
-    loginForm.style.display = 'block';
-    registerForm.style.display = 'none';
+    document.getElementById('login-form').style.display = 'block';
+    document.getElementById('register-form').style.display = 'none';
 
     // Switch to registration form
     showRegisterLink.addEventListener('click', function (e) {
         e.preventDefault();
-        loginForm.style.display = 'none';
-        registerForm.style.display = 'block';
+        document.getElementById('login-form').style.display = 'none';
+        document.getElementById('register-form').style.display = 'block';
     });
 
     // Switch to login form
     showLoginLink.addEventListener('click', function (e) {
         e.preventDefault();
-        loginForm.style.display = 'block';
-        registerForm.style.display = 'none';
+        document.getElementById('login-form').style.display = 'block';
+        document.getElementById('register-form').style.display = 'none';
     });
 
     // Handle account type selection
@@ -37,13 +37,13 @@ document.addEventListener('DOMContentLoaded', function () {
     // Registration form submission
     registerForm.addEventListener('submit', function (e) {
         e.preventDefault();
-        const name = registerForm.querySelector('#name').value;
-        const email = registerForm.querySelector('#email').value;
-        const username = registerForm.querySelector('#username').value;
-        const password = registerForm.querySelector('#reg-password').value;
-        const confirmPassword = registerForm.querySelector('#confirm-password').value;
-        const accountType = registerForm.querySelector('#account-type').value;
-        const shopOwnerPassword = registerForm.querySelector('#shop-owner-password').value;
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('reg-password').value;
+        const confirmPassword = document.getElementById('confirm-password').value;
+        const accountType = accountTypeSelect.value;
+        const shopOwnerPassword = document.getElementById('shop-owner-password').value;
 
         // Check if passwords match
         if (password !== confirmPassword) {
@@ -54,31 +54,27 @@ document.addEventListener('DOMContentLoaded', function () {
         // Simulate account creation based on account type
         if (accountType === 'buyer') {
             alert('Buyer account created successfully');
-            localStorage.setItem('accountType', 'buyer'); // Store account type in local storage
+            // Redirect to login form after account creation
+            document.getElementById('login-form').style.display = 'block';
+            document.getElementById('register-form').style.display = 'none';
         } else if (accountType === 'shop-owner' && shopOwnerPassword === '2007') {
             alert('Shop owner account created successfully');
-            localStorage.setItem('accountType', 'shop-owner'); // Store account type in local storage
+            // Redirect to login form after account creation
+            document.getElementById('login-form').style.display = 'block';
+            document.getElementById('register-form').style.display = 'none';
         } else {
             alert('Invalid shop owner password');
             return;
         }
-
-        // Redirect to login form after account creation
-        loginForm.style.display = 'block';
-        registerForm.style.display = 'none';
     });
 
     // Login form submission
     loginForm.addEventListener('submit', function (e) {
         e.preventDefault();
-        const username = loginForm.querySelector('#username-login').value;
-        const password = loginForm.querySelector('#password-login').value;
-
-        // Log to console for debugging
-        console.log('Attempting login with username:', username, 'and password:', password);
+        const username = document.getElementById('username-login').value;
+        const password = document.getElementById('password-login').value;
 
         // Dummy check for login (replace with actual authentication logic)
-        // Simulate successful login (replace with actual logic)
         // For demonstration, assume login is always successful and account type is stored in local storage
         alert('Logged in successfully');
         const accountType = localStorage.getItem('accountType');

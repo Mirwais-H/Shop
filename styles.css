@@ -1,100 +1,88 @@
-/* Reset and global styles */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-}
-
-.container {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 400px; /* Adjust width as needed */
-  text-align: center;
-  position: relative; /* Ensure container is relative for absolute positioning inside */
 }
 
 .form-container {
-  margin-bottom: 20px;
-}
-
-input, select, textarea {
-  width: calc(100% - 20px);
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-button {
-  padding: 10px 20px;
-  border: none;
-  background-color: #007BFF;
-  color: #fff;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-
-a {
-  color: #007BFF;
-  cursor: pointer;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* Items section */
-.items-container {
-  position: absolute;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjust item width */
-  gap: 20px; /* Adjust gap between items */
-  margin-top: 20px;
-}
-
-.item {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #e9f5ff;
-}
-
-.item img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* Shop owner section */
-#shop-owner-section {
-  position: absolute;
-  top: 250px; /* Adjust top position as needed */
-  right: 0px; /* Adjust right position as needed */
-  width: 400px; /* Adjust width as needed */
-  background-color: #f9f9f9;
+  max-width: 500px;
+  margin: auto;
   padding: 20px;
+  border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-@media screen and (max-width: 768px) {
-  .items-container {
-      grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); /* Adjust for smaller screens */
-  }
+h2 {
+  text-align: center;
+}
 
-  #shop-owner-section {
-      position: relative; /* Change position to relative for smaller screens */
-      width: 100%; /* Adjust width for smaller screens */
-      margin-top: 20px;
-      right: 0;
-  }
+.input-container {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input, select {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.switch-form {
+  text-align: center;
+  margin-top: 15px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: blue;
+  color: white;
+}
+
+.logo {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.profile-section {
+  display: flex;
+  align-items: center;
+}
+
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: white;
+  color: blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+}
+
+#logout {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
 }

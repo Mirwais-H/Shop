@@ -15,26 +15,33 @@
                 <div class="input-container">
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" required>
+                    <span class="error" id="name-error"></span>
                 </div>
                 <div class="input-container">
                     <label for="last-name">Last Name:</label>
                     <input type="text" id="last-name" name="last-name">
+                    <span class="error" id="last-name-error"></span>
                 </div>
                 <div class="input-container">
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" required>
+                    <span class="error" id="email-error"></span>
                 </div>
                 <div class="input-container">
                     <label for="username">Username:</label>
                     <input type="text" id="username" name="username" required>
+                    <span class="error" id="username-error"></span>
                 </div>
                 <div class="input-container">
                     <label for="reg-password">Password:</label>
                     <input type="password" id="reg-password" name="password" required>
+                    <span class="password-strength" id="password-strength"></span>
+                    <span class="error" id="reg-password-error"></span>
                 </div>
                 <div class="input-container">
                     <label for="confirm-password">Re-enter Password:</label>
                     <input type="password" id="confirm-password" name="confirm-password" required>
+                    <span class="error" id="confirm-password-error"></span>
                 </div>
                 <div class="input-container">
                     <label for="account-type">Account Type:</label>
@@ -46,6 +53,7 @@
                 <div class="input-container shop-owner-password" style="display: none;">
                     <label for="shop-owner-password">Shop Owner Password:</label>
                     <input type="password" id="shop-owner-password" name="shop-owner-password">
+                    <span class="error" id="shop-owner-password-error"></span>
                 </div>
                 <button type="submit" class="btn">Create Account</button>
                 <p class="switch-form">Already have an account? <a href="#" id="show-login">Login</a></p>
@@ -59,10 +67,12 @@
                 <div class="input-container">
                     <label for="username-login">Username:</label>
                     <input type="text" id="username-login" name="username" required>
+                    <span class="error" id="username-login-error"></span>
                 </div>
                 <div class="input-container">
                     <label for="password-login">Password:</label>
                     <input type="password" id="password-login" name="password" required>
+                    <span class="error" id="password-login-error"></span>
                 </div>
                 <button type="submit" class="btn">Login</button>
                 <p class="switch-form">Don't have an account? <a href="#" id="show-register">Create one</a></p>

@@ -1,13 +1,20 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path');
 
 const app = express();
 const port = 3000;
 
+// Middleware for parsing JSON and URL-encoded bodies
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Simulated in-memory storage (replace with database in real application)
 let users = [];
+let items = []; // Simulated storage for items
 
 // Register a new user
 app.post('/api/register', (req, res) => {
@@ -42,6 +49,39 @@ app.post('/api/login', (req, res) => {
 
     console.log('User authenticated:', user);
     res.status(200).json({ message: 'User authenticated successfully', user });
+});
+
+// Add an item to the shop
+app.post('/api/add-item', (req, res) => {
+    const itemData = req.body;
+
+    // Simulated validation (replace with actual validation logic)
+    if (!itemData || !itemData.name || !itemData.description || !itemData.price || !itemData.deliveryMethod) {
+        return res.status(400).json({ error: 'Incomplete item data' });
+    }
+
+    // Handle pickup address if delivery method is Pickup or Both
+    if (itemData.deliveryMethod === 'Pickup' || itemData.deliveryMethod === 'Both') {
+        if (!itemData.pickupAddress) {
+            return res.status(400).json({ error: 'Pickup address is required for Pickup or Both delivery methods' });
+        }
+    }
+
+    // Simulated save item data (push to array in this example)
+    items.push(itemData);
+    console.log('Item added:', itemData);
+    res.status(201).json({ message: 'Item added successfully' });
+});
+
+// Handle 404 - Keep this as the last middleware
+app.use((req, res, next) => {
+    res.status(404).send("Sorry, can't find that!");
+});
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
 });
 
 // Start the server

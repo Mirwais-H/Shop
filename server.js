@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const cors = require('cors');
+const fileUpload = require('express-fileupload');
 
 const app = express();
 const port = 3000;
@@ -8,6 +10,8 @@ const port = 3000;
 // Middleware for parsing JSON and URL-encoded bodies
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
+app.use(fileUpload());
 
 // Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));
@@ -65,6 +69,16 @@ app.post('/api/add-item', (req, res) => {
         if (!itemData.pickupAddress) {
             return res.status(400).json({ error: 'Pickup address is required for Pickup or Both delivery methods' });
         }
+    }
+
+    // Handle media files if provided
+    if (req.files && req.files.media) {
+        const mediaFiles = Array.isArray(req.files.media) ? req.files.media : [req.files.media];
+        itemData.media = mediaFiles.map(file => ({
+            name: file.name,
+            data: file.data.toString('base64'),
+            mimetype: file.mimetype
+        }));
     }
 
     // Simulated save item data (push to array in this example)

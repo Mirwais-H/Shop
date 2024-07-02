@@ -3,26 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buyer's Home</title>
     <link rel="stylesheet" href="styles.css">
+    <title>Buyer Account</title>
 </head>
 <body>
-    <header>
-        <div class="logo">MH-Business</div>
-        <div class="profile-section">
-            <button id="logout" onclick="logout()">Logout</button>
-            <div class="profile-pic">B</div>
+    <header class="account-header">
+        <div class="header-container">
+            <div class="logo">MH-Business</div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#cart">Cart</a></li> <!-- Updated link -->
+                    <li><a href="#orders">Orders</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="profile-section">
+                <div class="profile-pic">B</div>
+                <button id="logout">Logout</button>
+            </div>
         </div>
     </header>
     <main>
-        <!-- Buyer's home content -->
-        <h1>Welcome Buyer!</h1>
-        <p>This is the buyer's home page.</p>
+        <h1>Welcome, Buyer!</h1>
+        <p>This is your account page.</p>
     </main>
-    <script>
-        function logout() {
-            window.location.href = 'index.html';
-        }
-    </script>
+    <script src="scripts.js"></script>
 </body>
 </html>

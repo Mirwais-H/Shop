@@ -242,4 +242,23 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     }
+
+    // Handle cart link click for buyer
+    const cartLink = document.querySelector('nav a[href="#cart"]');
+    const cartSection = document.getElementById('cart');
+
+    if (cartLink) {
+        cartLink.addEventListener('click', function (e) {
+            e.preventDefault();
+            showCart();
+        });
+    }
+
+    function showCart() {
+        // Hide all other sections if needed
+        // Example: hideSectionsExcept('cart');
+
+        // Show the cart section
+        cartSection.style.display = 'block';
+    }
 });

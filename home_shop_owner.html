@@ -3,26 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop Owner's Home</title>
     <link rel="stylesheet" href="styles.css">
+    <title>Shop Owner Account</title>
 </head>
 <body>
-    <header>
-        <div class="logo">MH-Business</div>
-        <div class="profile-section">
-            <button id="logout" onclick="logout()">Logout</button>
-            <div class="profile-pic">S</div>
+    <header class="account-header">
+        <div class="header-container">
+            <div class="logo">MH-Business</div>
+            <nav>
+                <ul>
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="#products">My Products</a></li>
+                    <li><a href="#sales">Sales</a></li>
+                    <li><a href="#support">Support</a></li>
+                </ul>
+            </nav>
+            <div class="profile-section">
+                <div class="profile-pic">S</div>
+                <button id="logout">Logout</button>
+            </div>
         </div>
     </header>
     <main>
-        <!-- Shop owner's home content -->
-        <h1>Welcome Shop Owner!</h1>
-        <p>This is the shop owner's home page.</p>
+        <div id="dashboard" style="display: none;">
+            <h2>Shop Owner Dashboard</h2>
+            <div class="container">
+                <div id="add-item-container" style="width: 600px; margin: 0 auto;">
+                    <h3>Add Item</h3>
+                    <form id="add-item-form">
+                        <label for="itemName">Name:</label>
+                        <input type="text" id="itemName" name="itemName" required><br><br>
+        
+                        <label for="itemDescription">Description:</label><br>
+                        <textarea id="itemDescription" name="itemDescription" rows="4" cols="50" required></textarea><br><br>
+        
+                        <label for="itemPrice">Price:</label>
+                        <input type="number" id="itemPrice" name="itemPrice" step="0.01" required><br><br>
+        
+                        <label for="deliveryMethod">Delivery Method:</label>
+                        <select id="deliveryMethod" name="deliveryMethod">
+                            <option value="delivery">Delivery</option>
+                            <option value="pickup">Pickup</option>
+                            <option value="both">Both</option>
+                        </select><br><br>
+        
+                        <div id="pickup-address-container" style="display: none;">
+                            <label for="pickupAddress">Pickup Address:</label><br>
+                            <textarea id="pickupAddress" name="pickupAddress" rows="4" cols="50"></textarea><br><br>
+                        </div>
+        
+                        <label for="itemImage">Upload Image/Video:</label><br>
+                        <input type="file" id="itemImage" name="itemImage"><br><br>
+        
+                        <input type="submit" value="Add Item">
+                    </form>
+                </div>
+            </div>
+        </div>
     </main>
-    <script>
-        function logout() {
-            window.location.href = 'index.html';
-        }
-    </script>
+    <script src="scripts.js"></script>
 </body>
 </html>
